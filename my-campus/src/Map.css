@@ -1,0 +1,149 @@
+.map-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.map-region {
+  padding: 2.5rem 1.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-region::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.map-region:hover::before {
+  opacity: 1;
+}
+
+.map-region:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.map-region-active {
+  border-color: white;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 12px 35px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 12px 35px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 15px 45px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Region Colors */
+.map-region-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.map-region-green {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.map-region-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.map-region-orange {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+}
+
+.map-region-red {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.map-region-yellow {
+  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+}
+
+.map-region-pink {
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+}
+
+.map-region-locked {
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.map-region-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.map-region-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.map-player-icon {
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.map-locked-label {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .map-region {
+    padding: 1.5rem 1rem;
+  }
+
+  .map-region-name {
+    font-size: 1.1rem;
+  }
+
+  .map-player-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-container {
+    grid-template-columns: 1fr;
+  }
+}
